@@ -18,6 +18,7 @@ void cxcanTxError(cxcan_TxBuffer_t *msg);
 Std_ReturnType  cxcanTxBufferPut(cxcan_TxBuffer_t *msg);
 Std_ReturnType cxcanTxBufferGet(cxcan_TxBuffer_t *msg);
 cxBufferStatus_t cxcanTxBufferStatus(void);
+
 /*
 typedef struct {
 	can_status_msg_t data[1];

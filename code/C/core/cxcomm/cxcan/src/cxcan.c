@@ -5,14 +5,17 @@
  *      Author: Rodolfo.Ortega
  */
 #include "cxdtypes.h"
-//#include "cxcan_types.h"
+
+
+#ifdef	_CX_CAN_
+
+#include "cxcan_types.h"
 #include "cxcan.h"
 #include "ecucan.h"
 
 uint32_t volatile TxPutI;// put next
 uint32_t volatile TxGetI;// get next
 cxcan_TxBuffer_t static TxFifo[TX_BUFFER_SIZE];
-
 
 
 void cxcanInit(void) {
@@ -133,7 +136,7 @@ cxBufferStatus_t cxcanTxBufferStatus(void) {
 
 
 void cxcanMonitor(void) {
-	int idx;
+	uint16_t idx;
 	// time out handler
 	for(idx = cxCAN_MSG_MAX; idx>0;idx--) {
 		can_msg_tbl[idx - 1].to_ctr +=10; // incremente by 10ms
@@ -141,7 +144,7 @@ void cxcanMonitor(void) {
 			// set to flag
 			//can_msg_tbl[idx].to_flag = 1;
 			 //ecucanSetTimeOut(can_msg_tbl[idx].id);
-			ecucanSetTimeOut(idx-1);
+			ecucanSetTimeOut((cxcan_msg_list_t)(idx-1));
 		}
 		// check if there is crc
 		//if(can_msg_tbl[idx].crc == CRC_ERR) {
@@ -149,3 +152,5 @@ void cxcanMonitor(void) {
 		//}
 	}
 }
+
+#endif

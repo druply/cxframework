@@ -7,7 +7,6 @@
 
 #include "Os_Cfg.h"
 
-#ifdef _DEBUG_
 
 #include <stdint.h>
 
@@ -17,10 +16,14 @@
 typedef unsigned char boolean;
 #endif /* kcg_bool */
 
+#ifndef __cplusplus
+
 #ifndef bool
 #define bool bool
 typedef unsigned char bool;
 #endif /* kcg_bool */
+
+#endif
 
 
 #ifndef uint64
@@ -69,13 +72,7 @@ typedef volatile uint16		vuint16; /* 16 bits */
 typedef volatile uint32		vuint32; /* 32 bits */
 
 
-#define ENABLE		1
-#define	cxTRUE		1
-#define	cxFALSE		0
+#define ENABLE		1U
+#define	cxTRUE		(uint8_t)1
+#define	cxFALSE		(uint8_t)0
 
-
-#else
-	#include "user_code.h"
-	#define	cxTRUE		1
-	#define	cxFALSE		0
-#endif

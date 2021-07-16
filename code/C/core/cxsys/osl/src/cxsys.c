@@ -14,12 +14,20 @@
 #ifdef	_CX_CAN_
 #include "cxcan.h"
 #endif
-//OsState_t sys_state;
+
+
+#ifdef  _CX_DIO_
+#include "cxdio.h"
+#endif
+
+OsState_t sys_state = cxOS_INACTIVE;
 
 /**
  * Initialize OS
  */
 void cxsysInit(void) {
+	sys_state = cxOS_INIT;
+
 	//initialize apps
 	app_swc_init();
 
@@ -29,18 +37,36 @@ void cxsysInit(void) {
 		cxcanInit();
 	#endif
 
+    #ifdef  _CX_IO_
+        #ifdef  _CX_DIO_
+		    cxdioInit();
+        #endif
+    #endif
 }
-
 
 /**
  * Start OS
  */
 void cxsysStart(void) {
-	// execute threads
-
+	sys_state = cxOS_RUNNING;
 	// change OS state
 	//sys_state = OS_RUNNING;
 
 	// start OS
 	cxosStart();
+}
+
+void cxsysGetState(OsState_t *state) {
+	*state = sys_state;
+}
+
+/**
+ * Initialize OS
+ */
+void cxsysDeInit(void) {
+	sys_state = cxOS_INACTIVE;
+	// deinitialize app
+	app_swc_deinit();
+	//deiniliatize OS
+	cxosDeInit();
 }

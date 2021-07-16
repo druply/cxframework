@@ -12,9 +12,10 @@
 
 
 typedef enum {
-	OS_INACTIVE = 0,
-	OS_RUNNING
-}OsState_t;
+	cxOS_INACTIVE = 0,
+	cxOS_INIT,
+	cxOS_RUNNING
+} OsState_t;
 
 
 

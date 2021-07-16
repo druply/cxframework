@@ -14,6 +14,7 @@ int main() {
 
 	cxsysInit();
 
-	cxosThread0();
+	//cxosThread0();
+    cxsysStart();
 	return 0;
 }

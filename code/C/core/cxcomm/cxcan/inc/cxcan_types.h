@@ -9,7 +9,7 @@
 #define CORE_CXCOMM_CXCAN_INC_CXCAN_TYPES_H_
 
 
-typedef enum Std_ReturnType_en{
+typedef enum Std_ReturnType_en {
 	E_OK = 0,
 	E_NOT_OK
 } Std_ReturnType;
