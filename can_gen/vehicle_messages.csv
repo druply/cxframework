@@ -1,0 +1,7 @@
+Name,ID,Direction,ID-Format,DLC [Byte],Tx Method,Cycle Time,Timeout,Transmitter,Comment
+GPS_Coordinates,0x201,Rx,CAN Standard,8,<n.a.>,"10","50",vehicle,
+IMU_Acceleration,0x202,Rx,CAN Standard,8,<n.a.>,"10","50",vehicle,
+Motion_Control,0x205,Tx,CAN Standard,8,<n.a.>,"10",,-- No Transmitter --,
+Motion_Feedback,0x200,Rx,CAN Standard,8,<n.a.>,"10","50",vehicle,
+MU_Friction,0x204,Rx,CAN Standard,8,<n.a.>,"10","50",vehicle,
+TRAJ_Coordinates,0x203,Rx,CAN Standard,8,<n.a.>,"10","50",vehicle,
